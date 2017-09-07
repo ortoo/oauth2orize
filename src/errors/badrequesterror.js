@@ -3,19 +3,17 @@
  *
  * @api public
  */
-function BadRequestError(message) {
-  Error.call(this);
-  Error.captureStackTrace(this, arguments.callee);
-  this.name = 'BadRequestError';
-  this.message = message;
-  this.status = 400;
+class BadRequestError extends Error {
+  constructor(message) {
+    super(message);
+
+    this.name = 'BadRequestError';
+    this.message = message;
+    this.status = 400;
+
+    Error.captureStackTrace(this, this.constructor);
+  }
 }
-
-/**
- * Inherit from `Error`.
- */
-BadRequestError.prototype.__proto__ = Error.prototype;
-
 
 /**
  * Expose `BadRequestError`.

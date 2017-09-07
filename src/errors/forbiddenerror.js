@@ -3,19 +3,17 @@
  *
  * @api public
  */
-function ForbiddenError(message) {
-  Error.call(this);
-  Error.captureStackTrace(this, arguments.callee);
-  this.name = 'ForbiddenError';
-  this.message = message;
-  this.status = 403;
+class ForbiddenError extends Error {
+  constructor(message) {
+    super(message);
+
+    this.name = 'ForbiddenError';
+    this.message = message;
+    this.status = 403;
+
+    Error.captureStackTrace(this, this.constructor);
+  }
 }
-
-/**
- * Inherit from `Error`.
- */
-ForbiddenError.prototype.__proto__ = Error.prototype;
-
 
 /**
  * Expose `ForbiddenError`.
