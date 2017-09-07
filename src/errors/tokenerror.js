@@ -17,22 +17,22 @@ class TokenError extends OAuth2Error {
     if (!status) {
       switch (code) {
         case 'invalid_request':
-          status = 400;
+          this.status = 400;
           break;
         case 'invalid_client':
-          status = 401;
+          this.status = 401;
           break;
         case 'invalid_grant':
-          status = 403;
+          this.status = 403;
           break;
         case 'unauthorized_client':
-          status = 403;
+          this.status = 403;
           break;
         case 'unsupported_grant_type':
-          status = 501;
+          this.status = 501;
           break;
         case 'invalid_scope':
-          status = 400;
+          this.status = 400;
           break;
       }
     }

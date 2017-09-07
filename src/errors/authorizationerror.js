@@ -17,22 +17,22 @@ class AuthorizationError extends OAuth2Error {
     if (!status) {
       switch (code) {
         case 'invalid_request':
-          status = 400;
+          this.status = 400;
           break;
         case 'unauthorized_client':
-          status = 403;
+          this.status = 403;
           break;
         case 'access_denied':
-          status = 403;
+          this.status = 403;
           break;
         case 'unsupported_response_type':
-          status = 501;
+          this.status = 501;
           break;
         case 'invalid_scope':
-          status = 400;
+          this.status = 400;
           break;
         case 'temporarily_unavailable':
-          status = 503;
+          this.status = 503;
           break;
       }
     }
