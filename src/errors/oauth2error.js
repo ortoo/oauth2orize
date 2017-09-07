@@ -3,19 +3,18 @@
  *
  * @api public
  */
-function OAuth2Error(message, code, uri, status) {
-  Error.call(this);
-  this.message = message;
-  this.code = code || 'server_error';
-  this.uri = uri;
-  this.status = status || 500;
+class OAuth2Error extends Error {
+  constructor(message, code, uri, status) {
+    super(message);
+
+    this.message = message;
+    this.code = code || 'server_error';
+    this.uri = uri;
+    this.status = status || 500;
+
+    Error.captureStackTrace(this, this.constructor);
+  }
 }
-
-/**
- * Inherit from `Error`.
- */
-OAuth2Error.prototype.__proto__ = Error.prototype;
-
 
 /**
  * Expose `OAuth2Error`.
